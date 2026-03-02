@@ -100,6 +100,7 @@
             color: var(--sage-green);
         }
 
+        /* PERBAIKAN WADAH LINGKARAN (.talas-inset) */
         .talas-inset {
             position: absolute;
             bottom: -30px;
@@ -112,11 +113,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-weight: bold;
-            text-align: center;
-            padding: 1rem;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            
+            /* KUNCI 1: Menyembunyikan bagian gambar yang menonjol keluar dari lingkaran */
+            overflow: hidden; 
+            
+            /* Catatan: 'padding: 1rem;' dihapus agar gambar bisa menyentuh border putih secara penuh */
+        }
+
+        /* KUNCI 2: PERBAIKAN PADA GAMBAR ITU SENDIRI */
+        .foto-talas {
+            width: 100%; /* Memaksa gambar selebar wadahnya */
+            height: 100%; /* Memaksa gambar setinggi wadahnya */
+            object-fit: cover; /* Ajaib! Gambar akan mengisi wadah tanpa mengubah rasio/menjadi gepeng */
         }
 
         /* Section Penjelasan Literatur */
