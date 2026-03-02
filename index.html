@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jejak Budaya: Kukus Talas Bogor</title>
+    <style>
+        /* CSS Reset & Variabel Warna (Palet Warisan Bumi) */
+        :root {
+            --bg-cream: #F9F6F0;
+            --text-dark: #2C3525;
+            --sage-green: #5C715E;
+            --terracotta: #A65A42;
+            --gold-accent: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Georgia', serif; /* Font serif untuk kesan klasik/puitis */
+            font-weight: normal;
+        }
+
+        /* Hero Section (Menggunakan konsep Skema A: Jendela Budaya) */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 100vh;
+            align-items: center;
+            padding: 4rem 10%;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: var(--sage-green);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            border-left: 4px solid var(--terracotta);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            color: #4a4a4a;
+        }
+
+        .cta-box {
+            background-color: var(--sage-green);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Placeholder untuk gambar pemuda dan talas */
+        .image-placeholder {
+            width: 100%;
+            max-width: 400px;
+            height: 600px;
+            background-color: #E2DDD3;
+            border: 2px dashed var(--sage-green);
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            color: var(--sage-green);
+        }
+
+        .talas-inset {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 200px;
+            height: 200px;
+            background-color: var(--terracotta);
+            border-radius: 50%;
+            border: 6px solid var(--bg-cream);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Section Penjelasan Literatur (Sains & Sejarah) */
+        .content-section {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--terracotta);
+            margin-bottom: 3rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-cream);
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--sage-green);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--sage-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: var(--terracotta);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 10%;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 5%;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .talas-inset {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -50px;
+            }
+            .hero-image {
+                margin-top: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section: Pendekatan Puitis & Emosional -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Harmoni Antara Manusia, Tanah, dan Tradisi</h1>
+            <p class="quote">"Di setiap lembutnya Kukus Talas, tersimpan doa para petani dan kearifan tentang rasa syukur pada bumi. Bogor tidak hanya menawarkan cita rasa, tapi juga sebuah harmoni."</p>
+            
+            <div class="cta-box">
+                <p><strong>Menelusuri Jejak Budaya</strong></p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Scan QR Code (atau gulir ke bawah) untuk memahami filosofi dan sains di balik sepotong Talas Bogor.</p>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="image-placeholder">
+                <p><em>[Area untuk foto pemuda berbusana tradisional dari gambar yang diunggah]</em></p>
+            </div>
+            <!-- Ruang khusus untuk foto talas yang diminta -->
+            <div class="talas-inset">
+                <p><em>[Area Foto Close-up Talas Kukus Bogor]</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section: Pendekatan Ilmiah & Historis (Sintesis Literatur) -->
+    <section class="content-section">
+        <h2 class="section-title">Lebih Dari Sekadar Cita Rasa</h2>
+        
+        <div class="grid-container">
+            <!-- Kartu 1: Asal Usul -->
+            <div class="card">
+                <h3>Akar Sejarah</h3>
+                <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik. Di Indonesia, <span class="highlight">Kota Bogor</span> menjadi salah satu pusat budidaya terbesar. Varietas primadonanya adalah <strong>Talas Bentul</strong>, yang dikenal karena teksturnya yang pulen, aroma khas, dan produktivitasnya yang tinggi.</p>
+            </div>
+
+            <!-- Kartu 2: Nutrisi -->
+            <div class="card">
+                <h3>Kekayaan Nutrisi Bumi</h3>
+                <p>Talas tidak hanya mengenyangkan, tapi juga menyimpan nutrisi yang melampaui umbi lainnya. Kaya akan kalsium, fosfor, dan besi. Keunggulan utamanya terletak pada ukuran granula pati yang kecil sehingga <span class="highlight">sangat mudah dicerna</span>, dan sifat alaminya yang <strong>bebas gluten</strong>.</p>
+            </div>
+
+            <!-- Kartu 3: Sains (Oksalat) -->
+            <div class="card">
+                <h3>Sains di Balik Rasa Gatal</h3>
+                <p>Kelemahan alami talas adalah senyawa oksalat, khususnya kristal mikroskopis <span class="highlight">Kalsium Oksalat (raphide)</span> yang berbentuk seperti jarum tajam. Kristal inilah yang menusuk jaringan mulut dan menyebabkan rasa gatal atau bengkak jika talas tidak diolah dengan benar.</p>
+            </div>
+
+            <!-- Kartu 4: Solusi (Pengukusan) -->
+            <div class="card">
+                <h3>Kearifan Metode Kukus</h3>
+                <p>Mengapa "Kukus Talas"? Pengukusan (<em>steaming</em>) bukan sekadar tradisi, tapi proses kimiawi yang brilian. Panas uap air terbukti secara ilmiah mampu menurunkan kandungan asam oksalat hingga <span class="highlight">66,41%</span> tanpa menghilangkan nutrisi penting seperti kalsium sebanyak metode perebusan.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Jejak Budaya Talas Bogor. Harmoni Alam dan Tradisi.</p>
+    </footer>
+
+</body>
+</html>
