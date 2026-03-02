@@ -224,6 +224,7 @@
             position: relative;
             width: 90%;
             max-width: 500px;
+            max-height: 90vh; /* Agar tidak melewati layar di HP */
             z-index: 10000;
         }
 
@@ -253,13 +254,18 @@
         /* Kertas Naskah (Daluang) */
         .scroll-paper {
             min-height: 0; /* Wajib untuk animasi grid di atas */
-            overflow: hidden;
+            overflow-y: auto; /* Agar teks yang panjang bisa di-scroll di dalam kertas */
+            max-height: 70vh; /* Membatasi tinggi maksimum kertas */
             background-color: var(--paper-old);
             background-image: 
                 radial-gradient(rgba(0,0,0,0.03) 2px, transparent 2px),
                 linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 2%, transparent 98%, rgba(0,0,0,0.05) 100%);
             background-size: 10px 10px, 100% 100%;
             box-shadow: inset 0 0 30px rgba(92, 64, 51, 0.3);
+            
+            /* Sembunyikan scrollbar agar estetika kuno terjaga */
+            scrollbar-width: thin;
+            scrollbar-color: var(--terracotta) var(--paper-old);
         }
 
         /* Isi Teks di dalam gulungan */
@@ -282,6 +288,7 @@
             line-height: 1.8;
             text-indent: 2rem; /* Gaya tulisan lama */
             font-family: 'Georgia', serif;
+            margin-bottom: 1rem;
         }
 
         /* Tombol Tutup (Silang) */
@@ -296,6 +303,7 @@
             line-height: 1;
             opacity: 0.6;
             transition: opacity 0.3s;
+            z-index: 10;
         }
 
         .close-btn:hover {
@@ -325,6 +333,9 @@
             }
             .hero-image {
                 margin-top: 3rem;
+            }
+            .scroll-content {
+                padding: 2rem 1.5rem;
             }
         }
     </style>
@@ -358,58 +369,108 @@
         <h2 class="section-title">Lebih Dari Sekadar Cita Rasa</h2>
         
         <div class="grid-container">
-            <!-- Kartu 1: Akar Sejarah (Menjadi link pemicu animasi popup!) -->
+            <!-- Kartu 1: Akar Sejarah -->
             <a href="#naskah-akar-sejarah" class="card card-interactive">
                 <h3>Akar Sejarah</h3>
                 <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik. Di Indonesia, <span class="highlight">Kota Bogor</span> menjadi salah satu pusat budidaya terbesar...</p>
             </a>
 
             <!-- Kartu 2: Nutrisi -->
-            <div class="card">
+            <a href="#naskah-nutrisi" class="card card-interactive">
                 <h3>Kekayaan Nutrisi Bumi</h3>
                 <p>Talas tidak hanya mengenyangkan, tapi juga menyimpan nutrisi yang melampaui umbi lainnya. Kaya akan kalsium, fosfor, dan besi. Keunggulan utamanya terletak pada ukuran granula pati yang kecil sehingga <span class="highlight">sangat mudah dicerna</span>, dan sifat alaminya yang <strong>bebas gluten</strong>.</p>
-            </div>
+            </a>
 
             <!-- Kartu 3: Sains (Oksalat) -->
-            <div class="card">
+            <a href="#naskah-sains" class="card card-interactive">
                 <h3>Sains di Balik Rasa Gatal</h3>
                 <p>Kelemahan alami talas adalah senyawa oksalat, khususnya kristal mikroskopis <span class="highlight">Kalsium Oksalat (raphide)</span> yang berbentuk seperti jarum tajam. Kristal inilah yang menusuk jaringan mulut dan menyebabkan rasa gatal atau bengkak jika talas tidak diolah dengan benar.</p>
-            </div>
+            </a>
 
             <!-- Kartu 4: Solusi (Pengukusan) -->
-            <div class="card">
+            <a href="#naskah-solusi" class="card card-interactive">
                 <h3>Kearifan Metode Kukus</h3>
                 <p>Mengapa "Kukus Talas"? Pengukusan (<em>steaming</em>) bukan sekadar tradisi, tapi proses kimiawi yang brilian. Panas uap air terbukti secara ilmiah mampu menurunkan kandungan asam oksalat hingga <span class="highlight">66,41%</span> tanpa menghilangkan nutrisi penting seperti kalsium sebanyak metode perebusan.</p>
-            </div>
+            </a>
         </div>
     </section>
 
     <!-- =========================================
-         POPUP GULUNGAN NASKAH KUNO (DISEMBUNYIKAN)
+         KUMPULAN POPUP GULUNGAN NASKAH KUNO
          ========================================= -->
-    <!-- Elemen ini akan muncul ketika #naskah-akar-sejarah ada di URL -->
+
+    <!-- Naskah 1: Akar Sejarah -->
     <div id="naskah-akar-sejarah" class="modal-wrapper">
-        <!-- Latar gelap. Jika diklik, URL kembali ke "#" yang artinya menutup popup -->
         <a href="#" class="modal-bg"></a>
-        
         <div class="scroll-container">
-            <!-- Batang Kayu Atas -->
             <div class="wood-roller"></div>
-            
-            <!-- Pembungkus Animasi Gulungan -->
             <div class="scroll-unroll-animation">
                 <div class="scroll-paper">
                     <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Akar Sejarah</h3>
-                        <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik. Sejarah panjang telah membawa tanaman ini mengakar kuat di tanah Nusantara.</p>
-                        <br>
-                        <p>Di Indonesia, <strong>Kota Bogor</strong> menjelma menjadi salah satu pusat budidaya terbesar. Tanah vulkanisnya yang subur menjadi rumah sempurna bagi varietas primadona: <strong>Talas Bentul</strong>. Jejak budaya mencatat talas ini terus dicintai karena teksturnya yang begitu pulen, aroma buminya yang khas, dan ketahanannya yang luar biasa.</p>
+                        <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik oleh para pelaut purba. Sejarah panjang telah membawa tanaman ini mengakar kuat di tanah Nusantara, menyatu dengan tradisi agraris masyarakat lokal.</p>
+                        <p>Di Indonesia, <strong>Kota Bogor</strong> menjelma menjadi salah satu pusat budidaya terbesar. Tanah vulkanisnya yang sangat subur menjadi rumah sempurna bagi varietas primadona: <strong>Talas Bentul</strong>. Jejak budaya mencatat talas ini terus dicintai dari generasi ke generasi karena teksturnya yang begitu pulen, aroma buminya yang khas, dan ketahanannya yang luar biasa terhadap cuaca.</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Batang Kayu Bawah -->
+            <div class="wood-roller"></div>
+        </div>
+    </div>
+
+    <!-- Naskah 2: Nutrisi -->
+    <div id="naskah-nutrisi" class="modal-wrapper">
+        <a href="#" class="modal-bg"></a>
+        <div class="scroll-container">
+            <div class="wood-roller"></div>
+            <div class="scroll-unroll-animation">
+                <div class="scroll-paper">
+                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <div class="scroll-content">
+                        <h3>Kekayaan Nutrisi Bumi</h3>
+                        <p>Talas lebih dari sekadar pengganjal perut. Literatur gizi modern membuktikan bahwa umbi ini mengandung komponen makronutrien dan mikronutrien esensial yang sangat kaya, mulai dari kalsium, fosfor, besi, hingga Vitamin C dan B1 yang melampaui kerabatnya seperti singkong atau ubi jalar.</p>
+                        <p>Rahasia keunggulannya terletak pada struktur mikroskopis patinya. Granula pati talas berukuran sangat kecil dengan kandungan amilosa sekitar 20-25%. Hal ini membuatnya <strong>sangat mudah dicerna</strong> oleh lambung. Ditambah dengan sifat alaminya yang <strong>bebas gluten</strong>, talas kukus menjadi sumber energi murni yang aman bagi penderita alergi gluten maupun mereka yang mencari alternatif karbohidrat sehat.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wood-roller"></div>
+        </div>
+    </div>
+
+    <!-- Naskah 3: Sains (Oksalat) -->
+    <div id="naskah-sains" class="modal-wrapper">
+        <a href="#" class="modal-bg"></a>
+        <div class="scroll-container">
+            <div class="wood-roller"></div>
+            <div class="scroll-unroll-animation">
+                <div class="scroll-paper">
+                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <div class="scroll-content">
+                        <h3>Sains di Balik Rasa Gatal</h3>
+                        <p>Kearifan lokal mengajarkan kita untuk tidak memakan talas mentah. Di balik lembutnya daging talas, alam menanamkan mekanisme pertahanan berupa senyawa kimia bernama <strong>oksalat</strong>. Senyawa ini hadir dalam bentuk asam oksalat yang larut air, serta garam tak larut yang disebut Kalsium Oksalat.</p>
+                        <p>Secara mikroskopis, Kalsium Oksalat ini mengambil bentuk kristal tajam yang disebut <em>raphide</em> (jarum). Ketika kita memakan talas yang tidak diolah dengan benar, jarum-jarum mikroskopis ini akan menusuk jaringan lunak pada bibir, lidah, dan tenggorokan. Inilah yang menyebabkan sensasi gatal, terbakar, bahkan pembengkakan—sebuah peringatan langsung dari alam.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wood-roller"></div>
+        </div>
+    </div>
+
+    <!-- Naskah 4: Solusi (Pengukusan) -->
+    <div id="naskah-solusi" class="modal-wrapper">
+        <a href="#" class="modal-bg"></a>
+        <div class="scroll-container">
+            <div class="wood-roller"></div>
+            <div class="scroll-unroll-animation">
+                <div class="scroll-paper">
+                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <div class="scroll-content">
+                        <h3>Kearifan Metode Kukus</h3>
+                        <p>Bagaimana leluhur kita "menjinakkan" jarum-jarum kristal oksalat tersebut? Jawabannya ada pada metode pengukusan (<em>steaming</em>). Metode ini bukan sekadar cara memasak, melainkan sebuah proses kimiawi yang brilian dan elegan.</p>
+                        <p>Pengukusan memanfaatkan perpindahan panas secara konveksi dari uap air ke bahan makanan. Suhu panas yang stabil ini secara efektif memecah senyawa oksalat yang bersifat labil terhadap panas. Berdasarkan literatur penelitian, pengukusan mampu menurunkan kandungan asam oksalat secara drastis hingga <strong>66,41%</strong>. Hebatnya lagi, karena tidak terendam air secara langsung seperti pada perebusan, metode kukus berhasil menjaga nutrisi penting (seperti mineral kalsium murni) tetap terkunci di dalam daging talas.</p>
+                    </div>
+                </div>
+            </div>
             <div class="wood-roller"></div>
         </div>
     </div>
