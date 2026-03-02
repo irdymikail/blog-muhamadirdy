@@ -12,6 +12,8 @@
             --sage-green: #5C715E;
             --terracotta: #A65A42;
             --gold-accent: #D4AF37;
+            --paper-old: #E8DCC4; /* Warna kertas naskah kuno */
+            --wood-dark: #5C4033; /* Warna kayu penggulung */
         }
 
         * {
@@ -32,7 +34,7 @@
             font-weight: normal;
         }
 
-        /* Hero Section (Menggunakan konsep Skema A: Jendela Budaya) */
+        /* Hero Section */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -81,7 +83,6 @@
             align-items: center;
         }
 
-        /* Placeholder untuk gambar pemuda dan talas */
         .image-placeholder {
             width: 100%;
             max-width: 400px;
@@ -117,7 +118,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
-        /* Section Penjelasan Literatur (Sains & Sejarah) */
+        /* Section Penjelasan Literatur */
         .content-section {
             padding: 5rem 10%;
             background-color: white;
@@ -136,16 +137,38 @@
             gap: 2rem;
         }
 
+        /* Kartu normal */
         .card {
             background-color: var(--bg-cream);
             padding: 2rem;
             border-radius: 12px;
             border-top: 4px solid var(--sage-green);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Khusus kartu yang bisa di-klik untuk popup */
+        .card-interactive {
+            border-top: 4px solid var(--gold-accent);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card-interactive::after {
+            content: "✨ Klik untuk membuka naskah";
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            font-style: italic;
+            text-align: right;
         }
 
         .card h3 {
@@ -157,6 +180,126 @@
         .highlight {
             color: var(--terracotta);
             font-weight: bold;
+        }
+
+        /* =========================================
+           SISTEM POPUP & ANIMASI GULUNGAN KUNO (PURE CSS)
+           ========================================= */
+        
+        /* Wrapper Popup (Sembunyi secara default) */
+        .modal-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 9999;
+            transition: opacity 0.4s ease, visibility 0.4s;
+        }
+
+        /* Trik CSS: Muncul jika ID ini dipanggil di URL (diklik) */
+        .modal-wrapper:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Latar Belakang Gelap (Klik ini untuk menutup) */
+        .modal-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
+
+        /* Area Gulungan */
+        .scroll-container {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            z-index: 10000;
+        }
+
+        /* Kayu Penggulung Atas & Bawah */
+        .wood-roller {
+            height: 24px;
+            background: linear-gradient(to bottom, #795548, var(--wood-dark), #3E2723);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 2;
+            margin: 0 -15px; /* Sedikit lebih lebar dari kertas */
+        }
+
+        /* Pembungkus Animasi Terbentang (Trik CSS Grid) */
+        .scroll-unroll-animation {
+            display: grid;
+            grid-template-rows: 0fr; /* Awalnya tertutup rapat (0) */
+            transition: grid-template-rows 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Saat target aktif, bentangkan kertas ke ukuran aslinya (1fr) */
+        .modal-wrapper:target .scroll-unroll-animation {
+            grid-template-rows: 1fr;
+        }
+
+        /* Kertas Naskah (Daluang) */
+        .scroll-paper {
+            min-height: 0; /* Wajib untuk animasi grid di atas */
+            overflow: hidden;
+            background-color: var(--paper-old);
+            background-image: 
+                radial-gradient(rgba(0,0,0,0.03) 2px, transparent 2px),
+                linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 2%, transparent 98%, rgba(0,0,0,0.05) 100%);
+            background-size: 10px 10px, 100% 100%;
+            box-shadow: inset 0 0 30px rgba(92, 64, 51, 0.3);
+        }
+
+        /* Isi Teks di dalam gulungan */
+        .scroll-content {
+            padding: 3rem 2.5rem;
+            color: #3E2723;
+        }
+
+        .scroll-content h3 {
+            font-size: 2rem;
+            text-align: center;
+            color: var(--terracotta);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px dashed rgba(92, 64, 51, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .scroll-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-indent: 2rem; /* Gaya tulisan lama */
+            font-family: 'Georgia', serif;
+        }
+
+        /* Tombol Tutup (Silang) */
+        .close-btn {
+            position: absolute;
+            top: 35px;
+            right: 15px;
+            color: var(--terracotta);
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 1;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .close-btn:hover {
+            opacity: 1;
         }
 
         /* Footer */
@@ -188,7 +331,7 @@
 </head>
 <body>
 
-    <!-- Hero Section: Pendekatan Puitis & Emosional -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-text">
             <h1>Harmoni Antara Manusia, Tanah, dan Tradisi</h1>
@@ -204,23 +347,22 @@
             <div class="image-placeholder">
                 <p><em>[Area untuk foto pemuda berbusana tradisional dari gambar yang diunggah]</em></p>
             </div>
-            <!-- Ruang khusus untuk foto talas yang diminta -->
             <div class="talas-inset">
                 <p><em>[Area Foto Close-up Talas Kukus Bogor]</em></p>
             </div>
         </div>
     </section>
 
-    <!-- Content Section: Pendekatan Ilmiah & Historis (Sintesis Literatur) -->
+    <!-- Content Section -->
     <section class="content-section">
         <h2 class="section-title">Lebih Dari Sekadar Cita Rasa</h2>
         
         <div class="grid-container">
-            <!-- Kartu 1: Asal Usul -->
-            <div class="card">
+            <!-- Kartu 1: Akar Sejarah (Menjadi link pemicu animasi popup!) -->
+            <a href="#naskah-akar-sejarah" class="card card-interactive">
                 <h3>Akar Sejarah</h3>
-                <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik. Di Indonesia, <span class="highlight">Kota Bogor</span> menjadi salah satu pusat budidaya terbesar. Varietas primadonanya adalah <strong>Talas Bentul</strong>, yang dikenal karena teksturnya yang pulen, aroma khas, dan produktivitasnya yang tinggi.</p>
-            </div>
+                <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik. Di Indonesia, <span class="highlight">Kota Bogor</span> menjadi salah satu pusat budidaya terbesar...</p>
+            </a>
 
             <!-- Kartu 2: Nutrisi -->
             <div class="card">
@@ -241,6 +383,36 @@
             </div>
         </div>
     </section>
+
+    <!-- =========================================
+         POPUP GULUNGAN NASKAH KUNO (DISEMBUNYIKAN)
+         ========================================= -->
+    <!-- Elemen ini akan muncul ketika #naskah-akar-sejarah ada di URL -->
+    <div id="naskah-akar-sejarah" class="modal-wrapper">
+        <!-- Latar gelap. Jika diklik, URL kembali ke "#" yang artinya menutup popup -->
+        <a href="#" class="modal-bg"></a>
+        
+        <div class="scroll-container">
+            <!-- Batang Kayu Atas -->
+            <div class="wood-roller"></div>
+            
+            <!-- Pembungkus Animasi Gulungan -->
+            <div class="scroll-unroll-animation">
+                <div class="scroll-paper">
+                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <div class="scroll-content">
+                        <h3>Akar Sejarah</h3>
+                        <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik. Sejarah panjang telah membawa tanaman ini mengakar kuat di tanah Nusantara.</p>
+                        <br>
+                        <p>Di Indonesia, <strong>Kota Bogor</strong> menjelma menjadi salah satu pusat budidaya terbesar. Tanah vulkanisnya yang subur menjadi rumah sempurna bagi varietas primadona: <strong>Talas Bentul</strong>. Jejak budaya mencatat talas ini terus dicintai karena teksturnya yang begitu pulen, aroma buminya yang khas, dan ketahanannya yang luar biasa.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Batang Kayu Bawah -->
+            <div class="wood-roller"></div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2026 Jejak Budaya Talas Bogor. Harmoni Alam dan Tradisi.</p>
