@@ -27,6 +27,7 @@
             background-color: var(--bg-cream);
             color: var(--text-dark);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         h1, h2, h3 {
@@ -185,7 +186,7 @@
         }
 
         /* =========================================
-           SISTEM POPUP & ANIMASI GULUNGAN KUNO
+           SISTEM POPUP & ANIMASI GULUNGAN KUNO (REVISI)
            ========================================= */
         .modal-wrapper {
             position: fixed;
@@ -235,28 +236,30 @@
             margin: 0 -15px;
         }
 
-        .scroll-unroll-animation {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 1s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .modal-wrapper:target .scroll-unroll-animation {
-            grid-template-rows: 1fr;
-        }
-
-        .scroll-paper {
-            min-height: 0;
-            overflow-y: auto;
-            max-height: 70vh;
+        /* PERBAIKAN STRUKTUR ANIMASI (Prinsip Kesatuan Fisik) */
+        .scroll-paper-container {
+            height: 0; /* Awalnya tertutup rapat */
+            overflow: hidden; 
             background-color: var(--paper-old);
             background-image: 
                 radial-gradient(rgba(0,0,0,0.03) 2px, transparent 2px),
                 linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 2%, transparent 98%, rgba(0,0,0,0.05) 100%);
             background-size: 10px 10px, 100% 100%;
             box-shadow: inset 0 0 30px rgba(92, 64, 51, 0.3);
+            transition: height 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .modal-wrapper:target .scroll-paper-container {
+            height: 70vh; /* Semua gulungan punya panjang konsisten 70vh */
+        }
+
+        /* Sang Jendela Baca: Mengisi penuh ruang kertas */
+        .scroll-viewport {
+            height: 100%;
+            overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: var(--terracotta) var(--paper-old);
+            position: relative;
         }
 
         .scroll-content {
@@ -281,10 +284,11 @@
             margin-bottom: 1rem;
         }
 
+        /* Perbaikan Z-Index dan Posisi Tombol Close agar menempel di viewport scroll */
         .close-btn {
             position: absolute;
-            top: 35px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             color: var(--terracotta);
             text-decoration: none;
             font-size: 2rem;
@@ -297,6 +301,16 @@
 
         .close-btn:hover {
             opacity: 1;
+        }
+
+        ul {
+            padding-left: 2.5rem;
+            margin-bottom: 1rem;
+            color: #3E2723;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
         }
 
         /* =========================================
@@ -494,7 +508,7 @@
     </section>
 
     <!-- =========================================
-         BAGIAN DAFTAR PUSTAKA (BARU)
+         BAGIAN DAFTAR PUSTAKA
          ========================================= -->
     <section class="pustaka-section">
         <h2 class="pustaka-title">
@@ -502,7 +516,7 @@
             <span>Referensi yang merajut fakta dan sejarah</span>
         </h2>
 
-        <div class="lontar-container"> <!-- Mengubah ul menjadi div agar dapat membungkus anchor -->
+        <div class="lontar-container"> 
             <!-- Referensi 1 -->
             <a href="https://ejournal.undip.ac.id/index.php/pangan/article/view/18417" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Haryadi, P. & Widowati, S. (2018)</span>
@@ -530,18 +544,16 @@
     </section>
 
     <!-- =========================================
-         KUMPULAN POPUP GULUNGAN NASKAH KUNO
+         KUMPULAN POPUP GULUNGAN NASKAH KUNO (DENGAN STRUKTUR BARU)
          ========================================= -->
 
     <!-- Naskah 1: Akar Sejarah -->
     <div id="naskah-akar-sejarah" class="modal-wrapper">
-        <!-- PERBAIKAN: href diubah dari "#" menjadi "#!" -->
         <a href="#!" class="modal-bg" title="Klik untuk menutup"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
-            <div class="scroll-unroll-animation">
-                <div class="scroll-paper">
-                    <!-- PERBAIKAN: href diubah dari "#" menjadi "#!" -->
+            <div class="scroll-paper-container"> <!-- Pembungkus tekstur yang langsung dianimasikan -->
+                <div class="scroll-viewport"> <!-- Jendela scroll -->
                     <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Akar Sejarah</h3>
@@ -559,30 +571,21 @@
         <a href="#!" class="modal-bg"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
-            <div class="scroll-unroll-animation">
-                <div class="scroll-paper">
+            <div class="scroll-paper-container">
+                <div class="scroll-viewport">
                     <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Seni Mengukus Talas</h3>
                         <p>Membawa harmoni alam ke meja saji tidaklah sulit, asalkan kita mengikuti kearifan yang telah diwariskan. Berikut adalah cara menyajikan Kukus Talas Bogor yang sempurna:</p>
-                        
-                        <p><strong>Bahan-Bahan Warisan:</strong></p>
-                        <ul>
-                            <li>1 buah Talas Bentul segar (ukuran sedang)</li>
-                            <li>100 gram kelapa parut (pilih kelapa yang tidak terlalu tua)</li>
-                            <li>1/2 sendok teh garam laut halus</li>
-                            <li>Daun pandan segar (diikat simpul) untuk aroma</li>
-                            <li>Air secukupnya (untuk mencuci dan mengukus)</li>
-                        </ul>
-                        <br>
-                        <p><strong>Langkah Ritual Memasak:</strong></p>
-                        <ul>
-                            <li><strong>Mengupas Hati-hati:</strong> Kupas kulit talas hingga bersih. <em>Tips:</em> Gunakan sarung tangan plastik agar getah (oksalat) tidak membuat telapak tangan gatal.</li>
-                            <li><strong>Penyucian:</strong> Potong talas sesuai selera. Cuci potongan talas di bawah air mengalir. Gosok perlahan permukaannya untuk melepaskan lendir dan kristal oksalat yang tersisa di permukaan.</li>
-                            <li><strong>Persiapan Pengukus:</strong> Panaskan panci kukusan. Masukkan simpul daun pandan ke dalam air rebusan di bagian bawah panci untuk menghembuskan aroma wangi.</li>
-                            <li><strong>Proses Metamorfosis:</strong> Tata potongan talas di atas saringan kukusan. Kukus selama 30 hingga 45 menit dengan api sedang. Panas konveksi uap air ini yang akan mengurai racun oksalat hingga 66% menjadikannya aman dikonsumsi.</li>
-                            <li><strong>Penyajian:</strong> Campurkan kelapa parut dengan sedikit garam, lalu kukus sebentar (5 menit) agar tidak cepat basi. Taburkan di atas talas kukus yang masih hangat.</li>
-                        </ul>
+                            
+                            <p><strong>Bahan-Bahan Warisan:</strong></p>
+                            <ul>
+                                <li>1 buah Talas Bentul segar (ukuran sedang)</li>
+                                <li>100 gram kelapa parut (pilih kelapa yang tidak terlalu tua)</li>
+                                <li>1/2 sendok teh garam laut halus</li>
+                                <li>Daun pandan segar (diikat simpul) untuk aroma</li>
+                                <li>Air secukupnya (untuk mencuci dan mengukus)</li>
+                            </ul>
                     </div>
                 </div>
             </div>
@@ -595,8 +598,8 @@
         <a href="#!" class="modal-bg"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
-            <div class="scroll-unroll-animation">
-                <div class="scroll-paper">
+            <div class="scroll-paper-container">
+                <div class="scroll-viewport">
                     <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Kekayaan Nutrisi Bumi</h3>
@@ -614,8 +617,8 @@
         <a href="#!" class="modal-bg"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
-            <div class="scroll-unroll-animation">
-                <div class="scroll-paper">
+            <div class="scroll-paper-container">
+                <div class="scroll-viewport">
                     <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Sains di Balik Rasa Gatal</h3>
@@ -633,8 +636,8 @@
         <a href="#!" class="modal-bg"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
-            <div class="scroll-unroll-animation">
-                <div class="scroll-paper">
+            <div class="scroll-paper-container">
+                <div class="scroll-viewport">
                     <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Kearifan Metode Kukus</h3>
