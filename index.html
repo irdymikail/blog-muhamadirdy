@@ -317,6 +317,43 @@
             margin-bottom: 0.5rem;
         }
 
+        /* DITAMBAHKAN: Sistem Penomoran Unik bergaya Stempel Kuno */
+        .langkah-kuno {
+            list-style: none; /* Mematikan nomor bawaan browser */
+            counter-reset: urutan-langkah; /* Memulai mesin penghitung */
+            padding-left: 0;
+            margin-top: 1.5rem;
+        }
+
+        .langkah-kuno li {
+            counter-increment: urutan-langkah; /* Menambah angka setiap baris */
+            position: relative;
+            padding-left: 3.5rem; /* Memberi ruang untuk stempel angka */
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: #3E2723;
+        }
+
+        .langkah-kuno li::before {
+            content: counter(urutan-langkah); /* Menampilkan angka */
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 32px;
+            height: 32px;
+            background-color: var(--terracotta);
+            color: var(--bg-cream);
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Membuat bentuk lingkaran yang sedikit tidak beraturan seperti stempel lilin (Wax Seal) */
+            border-radius: 50% 45% 40% 55%; 
+            box-shadow: inset 2px 2px 4px rgba(255,255,255,0.2), 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
         /* =========================================
            BAGIAN DAFTAR PUSTAKA (DAUN LONTAR)
            ========================================= */
@@ -583,6 +620,21 @@
                             <li>Daun pandan segar (diikat simpul) untuk aroma</li>
                             <li>Air secukupnya (untuk mencuci dan mengukus)</li>
                         </ul>
+
+                        <p><strong>Langkah Pembuatan:</strong></p>
+                        <ol class="langkah-kuno">
+                            <li>Pertama-tama, kupas kulit talas dalam kondisi tangan dibalut sarung tangan biar tidak gatal.</li>
+                            <li>Kemudian potong-potong dan cuci di air mengalir sampai kotorannya terangkat. Pindahkan ke wadah besar.</li>
+                            <li>Taburi potongan talas memakai garam secukupnya, lalu gosokkan secara perlahan.</li>
+                            <li>Diamkan potongan talas selama kurang lebih 15 menit.</li>
+                            <li>Sembari menunggu, siapkan panci kukusan dan isi air secukupnya. Masukkan 2 lembar daun pandan yang diikat simpul.</li>
+                            <li>Didihkan kukusan menggunakan api sedang sampai muncul uap di dalamnya. Sisihkan.</li>
+                            <li>Cuci bersih talas di air mengalir sampai garamnya hilang. Sisihkan.</li>
+                            <li>Tempatkan kelapa parut di dalam mangkuk tahan panas, lalu beri garam secukupnya.</li>
+                            <li>Letakkan mangkuk isi kelapa ke dalam kukusan. Lalu tata potongan talas di sekitarnya.</li>
+                            <li>Kukus semua bahan sampai talas menjadi empuk.</li>
+                            <li>Cara penyajian bisa dilakukan dengan menempatkan potongan talas di atas piring dan beri kelapa, aduk bila perlu. Santapan pun siap dihidangkan.</li>
+                        </ol>
                     </div>
                 </div>
             </div>
