@@ -85,7 +85,6 @@
             align-items: center;
         }
 
-        /* Perbaikan CSS untuk Gambar Utama agar terlihat seperti karya seni terbingkai */
         .hero-main-image {
             width: 100%;
             max-width: 400px;
@@ -241,6 +240,9 @@
             background-size: 10px 10px, 100% 100%;
             box-shadow: inset 0 0 30px rgba(92, 64, 51, 0.3);
             transition: height 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            
+            /* DITAMBAHKAN: Agar wadah ini menjadi patokan/bingkai untuk tombol close */
+            position: relative; 
         }
 
         .modal-wrapper:target .scroll-paper-container {
@@ -253,7 +255,6 @@
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: var(--terracotta) var(--paper-old);
-            position: relative;
         }
 
         .scroll-content {
@@ -278,10 +279,10 @@
             margin-bottom: 1rem;
         }
 
-        /* Perbaikan Z-Index dan Posisi Tombol Close agar menempel di viewport scroll */
+        /* PERBAIKAN: Tombol Close sekarang menempel di kertas (bukan di arus scroll) */
         .close-btn {
             position: absolute;
-            top: 20px;
+            top: 15px;
             right: 20px;
             color: var(--terracotta);
             text-decoration: none;
@@ -290,11 +291,20 @@
             line-height: 1;
             opacity: 0.6;
             transition: opacity 0.3s;
-            z-index: 10;
+            z-index: 100; /* Pastikan selalu berada di atas teks */
+            background-color: rgba(232, 220, 196, 0.8); /* Opsional: memberi sedikit latar agar tidak menabrak teks */
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .close-btn:hover {
             opacity: 1;
+            background-color: var(--terracotta);
+            color: var(--bg-cream);
         }
 
         ul {
@@ -460,7 +470,6 @@
         </div>
 
         <div class="hero-image">
-            <!-- Menampilkan gambar nyata yang diunggah -->
             <img src="anu ppkn.png" alt="Pemuda berbusana tradisional membawa sajian Talas Kukus" class="hero-main-image">
             <div class="talas-inset">
                 <img src="Desain tanpa judul.png" alt="Sajian Kukus Talas Bogor" class="foto-talas">
@@ -500,9 +509,6 @@
         </div>
     </section>
 
-    <!-- =========================================
-         BAGIAN DAFTAR PUSTAKA
-         ========================================= -->
     <section class="pustaka-section">
         <h2 class="pustaka-title">
             Pustaka Leluhur & Sains Modern
@@ -510,25 +516,21 @@
         </h2>
 
         <div class="lontar-container"> 
-            <!-- Referensi 1 -->
             <a href="https://ejournal.undip.ac.id/index.php/pangan/article/view/18417" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Haryadi, P. & Widowati, S. (2018)</span>
                 <p class="lontar-text"><em>"Karakteristik Fisikokimia dan Nilai Gizi Umbi Talas (Colocasia esculenta) Banten dan Bogor"</em>. Jurnal Penelitian Pascapanen Pertanian, Vol. 15(2). Menjelaskan anatomi granula pati talas yang menjadikannya bebas gluten dan ramah pencernaan.</p>
             </a>
             
-            <!-- Referensi 2 -->
             <a href="https://jabar.tribunnews.com/" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Sastra, B. & Kusuma, D. R. (2020)</span>
                 <p class="lontar-text"><em>"Jejak Gastronomi Sunda: Menggali Filosofi Pangan Lokal Jawa Barat"</em>. Penerbit Budaya Nusantara. Menjabarkan sejarah agraris penyebaran talas di tanah vulkanis Bogor dan peranannya dalam ketahanan pangan era kolonial.</p>
             </a>
 
-            <!-- Referensi 3 -->
             <a href="https://jurnal.ugm.ac.id/agritech/article/view/14357" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Rahman, M. T. et al. (2021)</span>
                 <p class="lontar-text"><em>"Pengaruh Suhu dan Metode Pemanasan (Rebus vs Kukus) Terhadap Penurunan Kadar Kalsium Oksalat pada Talas Bentul"</em>. Jurnal Teknologi Pangan Terapan. Bukti empiris mengenai keampuhan uap air menurunkan racun oksalat hingga 66% tanpa merusak kalsium makro.</p>
             </a>
 
-            <!-- Referensi 4 -->
             <a href="https://balitkabi.litbang.pertanian.go.id/" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Balai Penelitian Tanaman Aneka Kacang dan Umbi (Balitkabi)</span>
                 <p class="lontar-text"><em>"Panduan Budi Daya dan Pasca Panen Talas Kualitas Unggul"</em>. Kementerian Pertanian Republik Indonesia. (2019). Dokumentasi lengkap tentang getah oksalat pada kulit talas dan standar pencucian yang aman.</p>
@@ -537,7 +539,8 @@
     </section>
 
     <!-- =========================================
-         KUMPULAN POPUP GULUNGAN NASKAH KUNO (DENGAN STRUKTUR BARU)
+         KUMPULAN POPUP GULUNGAN NASKAH KUNO 
+         (Tombol Close sudah dipindah ke tingkat atas scroll-paper-container)
          ========================================= -->
 
     <!-- Naskah 1: Akar Sejarah -->
@@ -545,9 +548,10 @@
         <a href="#!" class="modal-bg" title="Klik untuk menutup"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
-            <div class="scroll-paper-container"> <!-- Pembungkus tekstur yang langsung dianimasikan -->
-                <div class="scroll-viewport"> <!-- Jendela scroll -->
-                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
+            <div class="scroll-paper-container">
+                <!-- Tombol close dipindah ke sini, DI LUAR viewport -->
+                <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
+                <div class="scroll-viewport">
                     <div class="scroll-content">
                         <h3>Akar Sejarah</h3>
                         <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik oleh para pelaut purba. Sejarah panjang telah membawa tanaman ini mengakar kuat di tanah Nusantara, menyatu dengan tradisi agraris masyarakat lokal.</p>
@@ -565,20 +569,20 @@
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-paper-container">
+                <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                 <div class="scroll-viewport">
-                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Seni Mengukus Talas</h3>
                         <p>Membawa harmoni alam ke meja saji tidaklah sulit, asalkan kita mengikuti kearifan yang telah diwariskan. Berikut adalah cara menyajikan Kukus Talas Bogor yang sempurna:</p>
                             
-                            <p><strong>Bahan-Bahan Warisan:</strong></p>
-                            <ul>
-                                <li>1 buah Talas Bentul segar (ukuran sedang)</li>
-                                <li>100 gram kelapa parut (pilih kelapa yang tidak terlalu tua)</li>
-                                <li>1/2 sendok teh garam laut halus</li>
-                                <li>Daun pandan segar (diikat simpul) untuk aroma</li>
-                                <li>Air secukupnya (untuk mencuci dan mengukus)</li>
-                            </ul>
+                        <p><strong>Bahan-Bahan Warisan:</strong></p>
+                        <ul>
+                            <li>1 buah Talas Bentul segar (ukuran sedang)</li>
+                            <li>100 gram kelapa parut (pilih kelapa yang tidak terlalu tua)</li>
+                            <li>1/2 sendok teh garam laut halus</li>
+                            <li>Daun pandan segar (diikat simpul) untuk aroma</li>
+                            <li>Air secukupnya (untuk mencuci dan mengukus)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -592,8 +596,8 @@
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-paper-container">
+                <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                 <div class="scroll-viewport">
-                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Kekayaan Nutrisi Bumi</h3>
                         <p>Talas lebih dari sekadar pengganjal perut. Literatur gizi modern membuktikan bahwa umbi ini mengandung komponen makronutrien dan mikronutrien esensial yang sangat kaya, mulai dari kalsium, fosfor, besi, hingga Vitamin C dan B1 yang melampaui kerabatnya seperti singkong atau ubi jalar.</p>
@@ -611,8 +615,8 @@
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-paper-container">
+                <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                 <div class="scroll-viewport">
-                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Sains di Balik Rasa Gatal</h3>
                         <p>Kearifan lokal mengajarkan kita untuk tidak memakan talas mentah. Di balik lembutnya daging talas, alam menanamkan mekanisme pertahanan berupa senyawa kimia bernama <strong>oksalat</strong>. Senyawa ini hadir dalam bentuk asam oksalat yang larut air, serta garam tak larut yang disebut Kalsium Oksalat.</p>
@@ -630,8 +634,8 @@
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-paper-container">
+                <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                 <div class="scroll-viewport">
-                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Kearifan Metode Kukus</h3>
                         <p>Bagaimana leluhur kita "menjinakkan" jarum-jarum kristal oksalat tersebut? Jawabannya ada pada metode pengukusan (<em>steaming</em>). Metode ini bukan sekadar cara memasak, melainkan sebuah proses kimiawi yang brilian dan elegan.</p>
