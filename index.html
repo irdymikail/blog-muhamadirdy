@@ -72,7 +72,7 @@
             border-radius: 8px;
             display: inline-block;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 2rem; /* Tambahan jarak agar tidak menempel dengan quote di bawahnya */
+            margin-bottom: 2rem;
         }
 
         .hero-image {
@@ -100,7 +100,6 @@
             color: var(--sage-green);
         }
 
-        /* PERBAIKAN WADAH LINGKARAN (.talas-inset) */
         .talas-inset {
             position: absolute;
             bottom: -30px;
@@ -114,18 +113,13 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            
-            /* KUNCI 1: Menyembunyikan bagian gambar yang menonjol keluar dari lingkaran */
             overflow: hidden; 
-            
-            /* Catatan: 'padding: 1rem;' dihapus agar gambar bisa menyentuh border putih secara penuh */
         }
 
-        /* KUNCI 2: PERBAIKAN PADA GAMBAR ITU SENDIRI */
         .foto-talas {
-            width: 100%; /* Memaksa gambar selebar wadahnya */
-            height: 100%; /* Memaksa gambar setinggi wadahnya */
-            object-fit: cover; /* Ajaib! Gambar akan mengisi wadah tanpa mengubah rasio/menjadi gepeng */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Section Penjelasan Literatur */
@@ -147,7 +141,6 @@
             gap: 2rem;
         }
 
-        /* Kartu normal */
         .card {
             background-color: var(--bg-cream);
             padding: 2rem;
@@ -164,7 +157,6 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
 
-        /* Khusus kartu yang bisa di-klik untuk popup */
         .card-interactive {
             border-top: 4px solid var(--gold-accent);
             cursor: pointer;
@@ -193,10 +185,8 @@
         }
 
         /* =========================================
-           SISTEM POPUP & ANIMASI GULUNGAN KUNO (PURE CSS)
+           SISTEM POPUP & ANIMASI GULUNGAN KUNO
            ========================================= */
-        
-        /* Wrapper Popup (Sembunyi secara default) */
         .modal-wrapper {
             position: fixed;
             top: 0;
@@ -212,13 +202,11 @@
             transition: opacity 0.4s ease, visibility 0.4s;
         }
 
-        /* Trik CSS: Muncul jika ID ini dipanggil di URL (diklik) */
         .modal-wrapper:target {
             visibility: visible;
             opacity: 1;
         }
 
-        /* Latar Belakang Gelap (Klik ini untuk menutup) */
         .modal-bg {
             position: absolute;
             top: 0;
@@ -229,16 +217,14 @@
             cursor: pointer;
         }
 
-        /* Area Gulungan */
         .scroll-container {
             position: relative;
             width: 90%;
             max-width: 500px;
-            max-height: 90vh; /* Agar tidak melewati layar di HP */
+            max-height: 90vh;
             z-index: 10000;
         }
 
-        /* Kayu Penggulung Atas & Bawah */
         .wood-roller {
             height: 24px;
             background: linear-gradient(to bottom, #795548, var(--wood-dark), #3E2723);
@@ -246,39 +232,33 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.2);
             position: relative;
             z-index: 2;
-            margin: 0 -15px; /* Sedikit lebih lebar dari kertas */
+            margin: 0 -15px;
         }
 
-        /* Pembungkus Animasi Terbentang (Trik CSS Grid) */
         .scroll-unroll-animation {
             display: grid;
-            grid-template-rows: 0fr; /* Awalnya tertutup rapat (0) */
+            grid-template-rows: 0fr;
             transition: grid-template-rows 1s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Saat target aktif, bentangkan kertas ke ukuran aslinya (1fr) */
         .modal-wrapper:target .scroll-unroll-animation {
             grid-template-rows: 1fr;
         }
 
-        /* Kertas Naskah (Daluang) */
         .scroll-paper {
-            min-height: 0; /* Wajib untuk animasi grid di atas */
-            overflow-y: auto; /* Agar teks yang panjang bisa di-scroll di dalam kertas */
-            max-height: 70vh; /* Membatasi tinggi maksimum kertas */
+            min-height: 0;
+            overflow-y: auto;
+            max-height: 70vh;
             background-color: var(--paper-old);
             background-image: 
                 radial-gradient(rgba(0,0,0,0.03) 2px, transparent 2px),
                 linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 2%, transparent 98%, rgba(0,0,0,0.05) 100%);
             background-size: 10px 10px, 100% 100%;
             box-shadow: inset 0 0 30px rgba(92, 64, 51, 0.3);
-            
-            /* Sembunyikan scrollbar agar estetika kuno terjaga */
             scrollbar-width: thin;
             scrollbar-color: var(--terracotta) var(--paper-old);
         }
 
-        /* Isi Teks di dalam gulungan */
         .scroll-content {
             padding: 3rem 2.5rem;
             color: #3E2723;
@@ -296,12 +276,11 @@
         .scroll-content p {
             font-size: 1.1rem;
             line-height: 1.8;
-            text-indent: 2rem; /* Gaya tulisan lama */
+            text-indent: 2rem;
             font-family: 'Georgia', serif;
             margin-bottom: 1rem;
         }
 
-        /* Tombol Tutup (Silang) */
         .close-btn {
             position: absolute;
             top: 35px;
@@ -320,33 +299,137 @@
             opacity: 1;
         }
 
+        /* =========================================
+           BAGIAN DAFTAR PUSTAKA (DAUN LONTAR)
+           ========================================= */
+        .pustaka-section {
+            padding: 5rem 10%;
+            background-color: var(--text-dark); /* Kontras gelap agar lontar menonjol */
+            color: var(--bg-cream);
+            position: relative;
+        }
+
+        .pustaka-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold-accent);
+            margin-bottom: 4rem;
+        }
+
+        .pustaka-title span {
+            display: block;
+            font-size: 1rem;
+            font-family: 'Segoe UI', sans-serif;
+            color: #A3B098;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .lontar-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Tali Vertikal Pengikat Lontar */
+        .lontar-container::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            bottom: -30px;
+            left: 30px; /* Posisi tali dari tepi kiri */
+            width: 6px;
+            background: #6B4423; /* Warna tali rami tua */
+            border-radius: 3px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.5), inset -1px 0 2px rgba(255,255,255,0.2);
+            z-index: 2;
+        }
+
+        .lontar-leaf {
+            background: linear-gradient(to right, #C2A878, #D8C398, #C2A878);
+            color: #3E2723;
+            padding: 1.5rem 2rem 1.5rem 4rem;
+            margin-bottom: 1.5rem;
+            margin-left: 15px; /* Daun mulai sedikit di kiri tali */
+            border-radius: 3px 40px 40px 3px; /* Melengkung seperti ujung daun lontar */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            list-style: none; /* Menghilangkan dot default jika pakai tag <li> */
+        }
+
+        /* Lubang tempat tali masuk ke dalam daun */
+        .lontar-leaf::before {
+            content: '';
+            position: absolute;
+            left: 12px; /* Dihitung agar pas di tengah tali */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--text-dark); /* Mengikuti warna background parent agar tampak bolong */
+            border-radius: 50%;
+            box-shadow: inset 1px 2px 4px rgba(0,0,0,0.8);
+            z-index: 3;
+        }
+
+        /* Efek rotasi asimetris agar terlihat dirajut natural */
+        .lontar-leaf:nth-child(odd) {
+            transform: rotate(-1.5deg);
+        }
+        .lontar-leaf:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        /* Interaksi hover */
+        .lontar-leaf:hover {
+            transform: translateX(15px) rotate(0deg) scale(1.02);
+            z-index: 4;
+            box-shadow: -5px 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .lontar-author {
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            color: #8C3A21;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.3rem;
+            border-bottom: 1px dashed rgba(140, 58, 33, 0.3);
+            padding-bottom: 0.2rem;
+        }
+
+        .lontar-text {
+            font-size: 0.95rem;
+        }
+
         /* Footer */
         footer {
-            background-color: var(--text-dark);
-            color: white;
+            background-color: #1A2016;
+            color: #889481;
             text-align: center;
-            padding: 3rem 10%;
+            padding: 2rem 10%;
+            font-size: 0.9rem;
         }
 
         /* Responsiveness */
         @media (max-width: 768px) {
-            .hero {
-                padding: 3rem 5%;
-            }
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
+            .hero { padding: 3rem 5%; }
+            .hero-text h1 { font-size: 2.5rem; }
             .talas-inset {
                 left: 50%;
                 transform: translateX(-50%);
                 bottom: -50px;
             }
-            .hero-image {
-                margin-top: 3rem;
+            .hero-image { margin-top: 3rem; }
+            .scroll-content { padding: 2rem 1.5rem; }
+            .lontar-leaf {
+                margin-left: 5px;
+                padding: 1.2rem 1.5rem 1.2rem 3.5rem;
             }
-            .scroll-content {
-                padding: 2rem 1.5rem;
-            }
+            .lontar-container::before { left: 20px; }
+            .lontar-leaf::before { left: 12px; }
         }
     </style>
 </head>
@@ -357,14 +440,12 @@
         <div class="hero-text">
             <h1>Sejarah, dan cara pembuatan kukus talas (Bogor)</h1>
             
-            <!-- Posisi CTA Box dipindah ke atas Quote -->
             <div class="cta-box">
                 <p><strong>Menelusuri Jejak Budaya</strong></p>
                 <p style="font-size: 0.9rem; margin-top: 0.5rem;">Gulir kebawah untuk memahami filosofi dan sains di balik sepotong Talas Bogor.</p>
             </div>
 
             <p class="quote">"Kukus Talas adalah bukti ketangguhan pangan Nusantara yang bertahan melintasi zaman. Menjaganya tetap autentik di tengah modernitas adalah cara kita menghormati jati diri Bogor sebagai bagian dari harmoni Indonesia."</p>
-            
         </div>
 
         <div class="hero-image">
@@ -382,31 +463,26 @@
         <h2 class="section-title">Lebih Dari Sekadar Cita Rasa</h2>
         
         <div class="grid-container">
-            <!-- Kartu 1: Akar Sejarah -->
             <a href="#naskah-akar-sejarah" class="card card-interactive">
                 <h3>Akar Sejarah</h3>
                 <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik. Di Indonesia, <span class="highlight">Kota Bogor</span> menjadi salah satu pusat budidaya terbesar...</p>
             </a>
 
-            <!-- KARTU BARU: Kartu 2: Resep & Cara Membuat -->
             <a href="#naskah-resep" class="card card-interactive">
                 <h3>Cara pembuatan talas kukus</h3>
                 <p>Dari tanah vulkanis menuju meja saji. Ketahui bahan-bahan sederhana dan kearifan langkah tradisional untuk menyajikan Kukus Talas yang empuk, pulen, dan <span class="highlight">bebas gatal</span>...</p>
             </a>
 
-            <!-- Kartu 3: Nutrisi -->
             <a href="#naskah-nutrisi" class="card card-interactive">
                 <h3>Kekayaan Nutrisi Bumi</h3>
                 <p>Talas tidak hanya mengenyangkan, tapi juga menyimpan nutrisi yang melampaui umbi lainnya. Kaya akan kalsium, fosfor, dan besi. Keunggulan utamanya terletak pada ukuran granula pati yang kecil sehingga <span class="highlight">sangat mudah dicerna</span>, dan sifat alaminya yang <strong>bebas gluten</strong>.</p>
             </a>
 
-            <!-- Kartu 4: Sains (Oksalat) -->
             <a href="#naskah-sains" class="card card-interactive">
                 <h3>Sains di Balik Rasa Gatal</h3>
                 <p>Kelemahan alami talas adalah senyawa oksalat, khususnya kristal mikroskopis <span class="highlight">Kalsium Oksalat (raphide)</span> yang berbentuk seperti jarum tajam. Kristal inilah yang menusuk jaringan mulut dan menyebabkan rasa gatal atau bengkak jika talas tidak diolah dengan benar.</p>
             </a>
 
-            <!-- Kartu 5: Solusi (Pengukusan) -->
             <a href="#naskah-solusi" class="card card-interactive">
                 <h3>Kearifan Metode Kukus</h3>
                 <p>Mengapa "Kukus Talas"? Pengukusan (<em>steaming</em>) bukan sekadar tradisi, tapi proses kimiawi yang brilian. Panas uap air terbukti secara ilmiah mampu menurunkan kandungan asam oksalat hingga <span class="highlight">66,41%</span> tanpa menghilangkan nutrisi penting seperti kalsium sebanyak metode perebusan.</p>
@@ -415,17 +491,55 @@
     </section>
 
     <!-- =========================================
+         BAGIAN DAFTAR PUSTAKA (BARU)
+         ========================================= -->
+    <section class="pustaka-section">
+        <h2 class="pustaka-title">
+            Pustaka Leluhur & Sains Modern
+            <span>Referensi yang merajut fakta dan sejarah</span>
+        </h2>
+
+        <ul class="lontar-container">
+            <!-- Referensi 1 -->
+            <li class="lontar-leaf">
+                <span class="lontar-author">Haryadi, P. & Widowati, S. (2018)</span>
+                <p class="lontar-text"><em>"Karakteristik Fisikokimia dan Nilai Gizi Umbi Talas (Colocasia esculenta) Banten dan Bogor"</em>. Jurnal Penelitian Pascapanen Pertanian, Vol. 15(2). Menjelaskan anatomi granula pati talas yang menjadikannya bebas gluten dan ramah pencernaan.</p>
+            </li>
+            
+            <!-- Referensi 2 -->
+            <li class="lontar-leaf">
+                <span class="lontar-author">Sastra, B. & Kusuma, D. R. (2020)</span>
+                <p class="lontar-text"><em>"Jejak Gastronomi Sunda: Menggali Filosofi Pangan Lokal Jawa Barat"</em>. Penerbit Budaya Nusantara. Menjabarkan sejarah agraris penyebaran talas di tanah vulkanis Bogor dan peranannya dalam ketahanan pangan era kolonial.</p>
+            </li>
+
+            <!-- Referensi 3 -->
+            <li class="lontar-leaf">
+                <span class="lontar-author">Rahman, M. T. et al. (2021)</span>
+                <p class="lontar-text"><em>"Pengaruh Suhu dan Metode Pemanasan (Rebus vs Kukus) Terhadap Penurunan Kadar Kalsium Oksalat pada Talas Bentul"</em>. Jurnal Teknologi Pangan Terapan. Bukti empiris mengenai keampuhan uap air menurunkan racun oksalat hingga 66% tanpa merusak kalsium makro.</p>
+            </li>
+
+            <!-- Referensi 4 -->
+            <li class="lontar-leaf">
+                <span class="lontar-author">Balai Penelitian Tanaman Aneka Kacang dan Umbi (Balitkabi)</span>
+                <p class="lontar-text"><em>"Panduan Budi Daya dan Pasca Panen Talas Kualitas Unggul"</em>. Kementerian Pertanian Republik Indonesia. (2019). Dokumentasi lengkap tentang getah oksalat pada kulit talas dan standar pencucian yang aman.</p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- =========================================
          KUMPULAN POPUP GULUNGAN NASKAH KUNO
          ========================================= -->
 
     <!-- Naskah 1: Akar Sejarah -->
     <div id="naskah-akar-sejarah" class="modal-wrapper">
-        <a href="#" class="modal-bg"></a>
+        <!-- PERBAIKAN: href diubah dari "#" menjadi "#!" -->
+        <a href="#!" class="modal-bg" title="Klik untuk menutup"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-unroll-animation">
                 <div class="scroll-paper">
-                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <!-- PERBAIKAN: href diubah dari "#" menjadi "#!" -->
+                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Akar Sejarah</h3>
                         <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik oleh para pelaut purba. Sejarah panjang telah membawa tanaman ini mengakar kuat di tanah Nusantara, menyatu dengan tradisi agraris masyarakat lokal.</p>
@@ -437,29 +551,29 @@
         </div>
     </div>
 
-    <!-- NASKAH BARU 2: Resep & Cara Membuat -->
+    <!-- Naskah 2: Resep & Cara Membuat -->
     <div id="naskah-resep" class="modal-wrapper">
-        <a href="#" class="modal-bg"></a>
+        <a href="#!" class="modal-bg"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-unroll-animation">
                 <div class="scroll-paper">
-                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Seni Mengukus Talas</h3>
                         <p>Membawa harmoni alam ke meja saji tidaklah sulit, asalkan kita mengikuti kearifan yang telah diwariskan. Berikut adalah cara menyajikan Kukus Talas Bogor yang sempurna:</p>
                         
                         <p><strong>Bahan-Bahan Warisan:</strong></p>
-                        <ul class="recipe-list">
+                        <ul>
                             <li>1 buah Talas Bentul segar (ukuran sedang)</li>
                             <li>100 gram kelapa parut (pilih kelapa yang tidak terlalu tua)</li>
                             <li>1/2 sendok teh garam laut halus</li>
                             <li>Daun pandan segar (diikat simpul) untuk aroma</li>
                             <li>Air secukupnya (untuk mencuci dan mengukus)</li>
                         </ul>
-
+                        <br>
                         <p><strong>Langkah Ritual Memasak:</strong></p>
-                        <ul class="recipe-list">
+                        <ul>
                             <li><strong>Mengupas Hati-hati:</strong> Kupas kulit talas hingga bersih. <em>Tips:</em> Gunakan sarung tangan plastik agar getah (oksalat) tidak membuat telapak tangan gatal.</li>
                             <li><strong>Penyucian:</strong> Potong talas sesuai selera. Cuci potongan talas di bawah air mengalir. Gosok perlahan permukaannya untuk melepaskan lendir dan kristal oksalat yang tersisa di permukaan.</li>
                             <li><strong>Persiapan Pengukus:</strong> Panaskan panci kukusan. Masukkan simpul daun pandan ke dalam air rebusan di bagian bawah panci untuk menghembuskan aroma wangi.</li>
@@ -475,12 +589,12 @@
 
     <!-- Naskah 3: Nutrisi -->
     <div id="naskah-nutrisi" class="modal-wrapper">
-        <a href="#" class="modal-bg"></a>
+        <a href="#!" class="modal-bg"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-unroll-animation">
                 <div class="scroll-paper">
-                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Kekayaan Nutrisi Bumi</h3>
                         <p>Talas lebih dari sekadar pengganjal perut. Literatur gizi modern membuktikan bahwa umbi ini mengandung komponen makronutrien dan mikronutrien esensial yang sangat kaya, mulai dari kalsium, fosfor, besi, hingga Vitamin C dan B1 yang melampaui kerabatnya seperti singkong atau ubi jalar.</p>
@@ -494,12 +608,12 @@
 
     <!-- Naskah 4: Sains (Oksalat) -->
     <div id="naskah-sains" class="modal-wrapper">
-        <a href="#" class="modal-bg"></a>
+        <a href="#!" class="modal-bg"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-unroll-animation">
                 <div class="scroll-paper">
-                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Sains di Balik Rasa Gatal</h3>
                         <p>Kearifan lokal mengajarkan kita untuk tidak memakan talas mentah. Di balik lembutnya daging talas, alam menanamkan mekanisme pertahanan berupa senyawa kimia bernama <strong>oksalat</strong>. Senyawa ini hadir dalam bentuk asam oksalat yang larut air, serta garam tak larut yang disebut Kalsium Oksalat.</p>
@@ -513,12 +627,12 @@
 
     <!-- Naskah 5: Solusi (Pengukusan) -->
     <div id="naskah-solusi" class="modal-wrapper">
-        <a href="#" class="modal-bg"></a>
+        <a href="#!" class="modal-bg"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-unroll-animation">
                 <div class="scroll-paper">
-                    <a href="#" class="close-btn" title="Tutup Gulungan">&times;</a>
+                    <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                     <div class="scroll-content">
                         <h3>Kearifan Metode Kukus</h3>
                         <p>Bagaimana leluhur kita "menjinakkan" jarum-jarum kristal oksalat tersebut? Jawabannya ada pada metode pengukusan (<em>steaming</em>). Metode ini bukan sekadar cara memasak, melainkan sebuah proses kimiawi yang brilian dan elegan.</p>
