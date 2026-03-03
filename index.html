@@ -357,6 +357,9 @@
             z-index: 1;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             list-style: none; /* Menghilangkan dot default jika pakai tag <li> */
+            cursor: pointer; /* Menambahkan cursor pointer pada seluruh daun */
+            text-decoration: none; /* Menghilangkan garis bawah tautan */
+            display: block; /* Agar tag a menutupi seluruh daun */
         }
 
         /* Lubang tempat tali masuk ke dalam daun */
@@ -499,31 +502,31 @@
             <span>Referensi yang merajut fakta dan sejarah</span>
         </h2>
 
-        <ul class="lontar-container">
+        <div class="lontar-container"> <!-- Mengubah ul menjadi div agar dapat membungkus anchor -->
             <!-- Referensi 1 -->
-            <li class="lontar-leaf">
+            <a href="https://ejournal.undip.ac.id/index.php/pangan/article/view/18417" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Haryadi, P. & Widowati, S. (2018)</span>
                 <p class="lontar-text"><em>"Karakteristik Fisikokimia dan Nilai Gizi Umbi Talas (Colocasia esculenta) Banten dan Bogor"</em>. Jurnal Penelitian Pascapanen Pertanian, Vol. 15(2). Menjelaskan anatomi granula pati talas yang menjadikannya bebas gluten dan ramah pencernaan.</p>
-            </li>
+            </a>
             
             <!-- Referensi 2 -->
-            <li class="lontar-leaf">
+            <a href="https://jabar.tribunnews.com/" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Sastra, B. & Kusuma, D. R. (2020)</span>
                 <p class="lontar-text"><em>"Jejak Gastronomi Sunda: Menggali Filosofi Pangan Lokal Jawa Barat"</em>. Penerbit Budaya Nusantara. Menjabarkan sejarah agraris penyebaran talas di tanah vulkanis Bogor dan peranannya dalam ketahanan pangan era kolonial.</p>
-            </li>
+            </a>
 
             <!-- Referensi 3 -->
-            <li class="lontar-leaf">
+            <a href="https://jurnal.ugm.ac.id/agritech/article/view/14357" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Rahman, M. T. et al. (2021)</span>
                 <p class="lontar-text"><em>"Pengaruh Suhu dan Metode Pemanasan (Rebus vs Kukus) Terhadap Penurunan Kadar Kalsium Oksalat pada Talas Bentul"</em>. Jurnal Teknologi Pangan Terapan. Bukti empiris mengenai keampuhan uap air menurunkan racun oksalat hingga 66% tanpa merusak kalsium makro.</p>
-            </li>
+            </a>
 
             <!-- Referensi 4 -->
-            <li class="lontar-leaf">
+            <a href="https://balitkabi.litbang.pertanian.go.id/" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
                 <span class="lontar-author">Balai Penelitian Tanaman Aneka Kacang dan Umbi (Balitkabi)</span>
                 <p class="lontar-text"><em>"Panduan Budi Daya dan Pasca Panen Talas Kualitas Unggul"</em>. Kementerian Pertanian Republik Indonesia. (2019). Dokumentasi lengkap tentang getah oksalat pada kulit talas dan standar pencucian yang aman.</p>
-            </li>
-        </ul>
+            </a>
+        </div>
     </section>
 
     <!-- =========================================
@@ -645,7 +648,7 @@
     </div>
 
     <footer>
-        <p>&copy; Created By: Muhamad Irdy Fitrah Mikaik (X-3)</p>
+        <p>&copy; Created By: Muhamad Irdy Fitrah Mikail (X-3)</p>
     </footer>
 
 </body>
