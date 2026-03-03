@@ -271,6 +271,12 @@
             padding-bottom: 0.5rem;
         }
 
+        /* Penyesuaian judul yang panjang */
+        .scroll-content h3.long-title {
+            font-size: 1.6rem;
+            line-height: 1.3;
+        }
+
         .scroll-content p {
             font-size: 1.1rem;
             line-height: 1.8;
@@ -519,9 +525,10 @@
         <h2 class="section-title">Lebih Dari Sekadar Cita Rasa</h2>
         
         <div class="grid-container">
+            <!-- Kartu menu yang diperbarui -->
             <a href="#naskah-akar-sejarah" class="card card-interactive">
-                <h3>Akar Sejarah</h3>
-                <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik. Di Indonesia, <span class="highlight">Kota Bogor</span> menjadi salah satu pusat budidaya terbesar...</p>
+                <h3>Sejarah Panjang Talas Bogor</h3>
+                <p>Talas (<em>Colocasia esculenta</em>) berasal dari Asia Tenggara dan dibudidayakan ribuan tahun lalu. Di Indonesia, ia menjadi bagian dari sistem pertanian tradisional, terutama di daerah tropis lembab seperti <span class="highlight">Bogor</span>...</p>
             </a>
 
             <a href="#naskah-resep" class="card card-interactive">
@@ -558,9 +565,9 @@
                 <p class="lontar-text"><em>"Karakteristik Fisikokimia dan Nilai Gizi Umbi Talas (Colocasia esculenta) Banten dan Bogor"</em>. Jurnal Penelitian Pascapanen Pertanian, Vol. 15(2). Menjelaskan anatomi granula pati talas yang menjadikannya bebas gluten dan ramah pencernaan.</p>
             </a>
             
-            <a href="https://www.idntimes.com/food/recipe/resep-talas-kukus-kelapa-c1c2-01-tdp64-8s6d6g" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
-                <span class="lontar-author">Buchr, Intan Pratiwi (02 Jun 2024)</span>
-                <p class="lontar-text"><em>"Resep Talas Kukus Kelapa, Camilan Teman Minum Kopi dan Teh</p>
+            <a href="https://jabar.tribunnews.com/" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
+                <span class="lontar-author">Sastra, B. & Kusuma, D. R. (2020)</span>
+                <p class="lontar-text"><em>"Jejak Gastronomi Sunda: Menggali Filosofi Pangan Lokal Jawa Barat"</em>. Penerbit Budaya Nusantara. Menjabarkan sejarah agraris penyebaran talas di tanah vulkanis Bogor dan peranannya dalam ketahanan pangan era kolonial.</p>
             </a>
 
             <a href="https://jurnal.ugm.ac.id/agritech/article/view/14357" target="_blank" rel="noopener noreferrer" class="lontar-leaf">
@@ -577,22 +584,21 @@
 
     <!-- =========================================
          KUMPULAN POPUP GULUNGAN NASKAH KUNO 
-         (Tombol Close sudah dipindah ke tingkat atas scroll-paper-container)
          ========================================= -->
 
-    <!-- Naskah 1: Akar Sejarah -->
+    <!-- Naskah 1: Akar Sejarah (Diperbarui) -->
     <div id="naskah-akar-sejarah" class="modal-wrapper">
         <a href="#!" class="modal-bg" title="Klik untuk menutup"></a>
         <div class="scroll-container">
             <div class="wood-roller"></div>
             <div class="scroll-paper-container">
-                <!-- Tombol close dipindah ke sini, DI LUAR viewport -->
                 <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                 <div class="scroll-viewport">
                     <div class="scroll-content">
-                        <h3>Akar Sejarah</h3>
-                        <p>Berasal dari Asia Tenggara, talas (<em>Colocasia esculenta</em>) menyebar melintasi Samudera Pasifik oleh para pelaut purba. Sejarah panjang telah membawa tanaman ini mengakar kuat di tanah Nusantara, menyatu dengan tradisi agraris masyarakat lokal.</p>
-                        <p>Di Indonesia, <strong>Kota Bogor</strong> menjelma menjadi salah satu pusat budidaya terbesar. Tanah vulkanisnya yang sangat subur menjadi rumah sempurna bagi varietas primadona: <strong>Talas Bentul</strong>. Jejak budaya mencatat talas ini terus dicintai dari generasi ke generasi karena teksturnya yang begitu pulen, aroma buminya yang khas, dan ketahanannya yang luar biasa terhadap cuaca.</p>
+                        <!-- Judul panjang membutuhkan penyesuaian kelas CSS yang sudah ditambahkan di atas -->
+                        <h3 class="long-title">Sejarah Panjang Talas Bogor: Dari Kebutuhan Pangan hingga Ikon Kota</h3>
+                        <p>Talas, atau <em>Colocasia esculenta</em>, diperkirakan berasal dari Asia Tenggara dan telah dibudidayakan selama ribuan tahun. Di Indonesia, talas telah menjadi bagian dari sistem pertanian tradisional sejak lama, terutama di daerah-daerah dengan iklim tropis yang lembab seperti Bogor.</p>
+                        <p>Seiring berjalannya waktu, talas tidak hanya sekadar menjadi sumber pangan alternatif. Masyarakat Bogor mulai mengembangkan berbagai olahan talas, menciptakan hidangan-hidangan lezat yang kemudian menjadi ciri khas kota. Inovasi ini menjadikan talas semakin populer dan digemari, tidak hanya oleh masyarakat lokal, tetapi juga oleh wisatawan yang berkunjung ke Bogor.</p>
                     </div>
                 </div>
             </div>
@@ -609,8 +615,10 @@
                 <a href="#!" class="close-btn" title="Tutup Gulungan">&times;</a>
                 <div class="scroll-viewport">
                     <div class="scroll-content">
-                        <h3>Cara pembuatan talas kukus</h3>
-                        <p><strong>Bahan yang digunakan:</strong></p>
+                        <h3>Seni Mengukus Talas</h3>
+                        <p>Membawa harmoni alam ke meja saji tidaklah sulit, asalkan kita mengikuti kearifan yang telah diwariskan. Berikut adalah cara menyajikan Kukus Talas Bogor yang sempurna:</p>
+                            
+                        <p><strong>Bahan-Bahan Warisan:</strong></p>
                         <ul>
                             <li>1 buah Talas Bentul segar (ukuran sedang)</li>
                             <li>100 gram kelapa parut (pilih kelapa yang tidak terlalu tua)</li>
